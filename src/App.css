@@ -1,0 +1,26 @@
+
+/*Imports*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+/*Default Styling*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.heading {
+    color: black;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.favouriteButton {
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 10px;
+}
+
