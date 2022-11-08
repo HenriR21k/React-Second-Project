@@ -6,6 +6,8 @@ function Home() {
   // Initialisation ------------------------------
   const loggedInUserID = 31;
   const endpoint = `/groups/users/${loggedInUserID}`
+  
+  
   // State ---------------------------------------
   const [groups, setGroups] = useState(null);
   const [loadingMessage, setLoadingMessage] = useState('Loading records ...');
