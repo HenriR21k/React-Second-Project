@@ -17,24 +17,31 @@ function GroupNameCard({group}) {
   const endpointAddress = URL + endpoint;
   const response = await fetch(endpointAddress)
   const result = await response.json();
-  console.log(result);
   setTasks(result);
   }
   
   useEffect(() => { apiCall(endpoint) }, []);
 
-  tasks.map(task => tasks.TaskTitle);
+  
   
   return (
 
     <div className="GroupNameCard">
     
     <p>Group {group.GroupID}: {group.GroupName}</p>
+      
       <div className='TaskCard'>
-        <ul>
-          <li></li>
-        </ul>
+        {tasks.map((task) => {
+          return (
+            <div>
+              <ul>
+                <li>{task.TaskTitle}</li>
+              </ul>
+            </div>
+          );
+        })}
       </div>
+
     </div>
     
   )

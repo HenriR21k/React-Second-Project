@@ -20,7 +20,6 @@ function Home() {
   const response = await fetch(endpointAddress)
   
   const result = await response.json();
-  console.log(result);
   
   setGroups(result);
   }
