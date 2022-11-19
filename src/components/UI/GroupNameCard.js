@@ -1,13 +1,14 @@
 import './GroupNameCard.css';
 import './TaskCard.js';
 import { useState, useEffect } from "react";
+import { Navigate, useNavigate } from 'react-router-dom';
+import AddTasksPage from '../pages/AddTasksPage';
 
-function GroupNameCard({group}) {
+function GroupNameCard({group, userID}) {
   //Initialisation -------------------
-  //Store groupID in variable
-  //Also store userID in variable
-  const loggedInUserID = 31;
-  const endpoint = `/groups/users/tasks/${loggedInUserID},${group.GroupID}`
+
+  const endpoint = `/groups/${group.GroupID}/users/${userID}/tasks`
+  const navigate = useNavigate();
   // State ---------------------------------------
   const [tasks, setTasks] = useState(null);
 
@@ -22,16 +23,29 @@ function GroupNameCard({group}) {
   
   useEffect(() => { apiCall(endpoint) }, []);
 
+  const NavigateToAddTasksForm = (groupID) => {
+
+    //include navigate statement with params
+    
+      navigate('../GroupPage/AddTaskPage')
+  
+  }
+
+  const navigateToViewGroupTasks = () => {
+  navigate("../")
+  }
   
   
   return (
 
     <div className="GroupNameCard">
+
     
-    <p>Group {group.GroupID}: {group.GroupName}</p>
+    <p onClick={NavigateToAddTasksForm}>Group {group.GroupID}: {group.GroupName}</p>
+    
       
       <div className='TaskCard'>
-        {tasks.map((task) => {
+        {/*tasks.map((task) => {
           return (
             <div>
               <ul>
@@ -39,9 +53,9 @@ function GroupNameCard({group}) {
               </ul>
             </div>
           );
-        })}
+        })*/}
       </div>
-
+      
     </div>
     
   )

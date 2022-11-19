@@ -4,7 +4,7 @@ import './Home.css';
 
 function Home() {
   // Initialisation ------------------------------
-  const loggedInUserID = 31;
+  const loggedInUserID = 42;
   const endpoint = `/groups/users/${loggedInUserID}`
   
   
@@ -38,6 +38,7 @@ function Home() {
             ? <p>You are not in any groups.</p>
             : <GroupList
               groups={groups}
+              userID={loggedInUserID}
             />
       }
     </section>

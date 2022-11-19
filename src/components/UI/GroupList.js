@@ -11,6 +11,7 @@ export function GroupList(props) {
                     <GroupNameCard 
                         key={group.GroupID} 
                         group = {group} 
+                        userID = {props.userID}
                     />
                 )
             }
