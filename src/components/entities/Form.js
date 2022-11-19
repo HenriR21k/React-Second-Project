@@ -1,3 +1,5 @@
+import './Form.css';
+
 export function Form(props) {
 
   return (
@@ -30,6 +32,21 @@ export function FormSelect(props) {
       <select name={props.name} id={props.id} defaultValue={props.defaultValue} onChange={props.onChange}>
       {props.children}
     </select> <br/>
+  </>
+  )
+}
+
+export function FormTextArea(props) {
+
+  return (
+  <>
+    <label htmlFor={props.name}> {props.label} </label> <br/>
+    <textarea type={props.type} id={props.name} name={props.name} defaultValue={props.defaultValue} onChange={props.onChange} placeholder={props.placeholder}/> <br />
+    {
+      props.error &&
+        <p>Error message: {props.error}</p>
+
+    }
   </>
   )
 }

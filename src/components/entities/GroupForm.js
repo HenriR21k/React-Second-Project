@@ -1,16 +1,22 @@
-import {Form, FormInput, FormSelect} from "./Form";
+import {Form, FormInput, FormSelect, FormTextArea} from "./Form";
 import Button from "../UI/Button";
 import { useState } from "react";
+import { Navigate, useNavigate } from 'react-router-dom';
+import './Form.css'
+import './GroupForm.css'
 
 
 export default function GroupForm(props) {
 
   //Initialisation
+
+  const navigate = useNavigate();
+  
   //State
   const [task, setTask] = useState(null);
   //Methods
 
-
+ 
 
   const handleChange = (event) => {
     const updatedTask = {...task, [event.target.name]: event.target.value};
@@ -21,35 +27,52 @@ export default function GroupForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault()
     task['GroupID'] = props.groupID;
+    task['TaskStatus'] = "Outstanding";
+    console.log(task);
     props.onPost(task);
-  
+    navigate('/');
+    
   }
 
   //View
   return (
     <>
-    <h1>Add Task form:</h1>
+  
     <p>{props.groupID}</p>
 
 
-    <Form onSubmit={handleSubmit}>
-        <FormInput name = "TaskTitle" placeholder = "Programming..." label = "Task Title" onChange={handleChange}   />
-        <FormInput name = "TaskDescription" placeholder = "Enter task description (max 300 char)..." label = "Task Description" onChange={handleChange}  />
-        <FormInput name = "TaskStatus" placeholder = "Outstanding" label = "Task Status" onChange={handleChange}  />
-        <FormInput name = "TaskSetDate" placeholder = "YYYY/MM/DDT00:00:00Z" label = "Task Set Date" onChange={handleChange} />
-        <FormInput name = "TaskDeadline" placeholder = "YYYY/MM/DDT00:00:00Z" label = "Task Deadline" onChange={handleChange} />
-        
+<div className="Container">
+    <div className="Card">
+      <h1>Add Task form:</h1>
+        <div className="Form">
+            <Form onSubmit={handleSubmit}>
+                <div className="FormFields">
+                  <div className="Field"> 
+                    <FormInput name = "TaskTitle" placeholder = "Enter task title" label = "Task Title" onChange={handleChange}   />
+                    </div>
+                    <div className="Field">
+                    <FormTextArea name = "TaskDescription" placeholder = "Enter task description (max 300 char)..." label = "Task Description" onChange={handleChange}  />
+                    </div>
+                    <div className="Field">
+                    <FormInput name = "TaskSetDate" type = "datetime-local" placeholder = "YYYY/MM/DDT00:00:00Z" label = "Task Set Date" onChange={handleChange} />
+                    </div>
+                    <div className="Field">
+                    <FormInput name = "TaskDeadline" type = "datetime-local" placeholder = "YYYY/MM/DDT00:00:00Z" label = "Task Deadline" onChange={handleChange} />
+                    </div>
+                <Button
+                  className = "submitBtn"
+                  img = ""
+                  alt = ""
+                  title = "Submit"
+                  onClick = {handleSubmit}
+                  type = "Button"
+                ></Button>
+              </div>
 
-        <Button
-          className = "submitBtn"
-          img = ""
-          alt = ""
-          title = "Submit"
-          onClick = {handleSubmit}
-          type = "Button"
-        ></Button>
-
-      </Form>
+              </Form>
+      </div>
+    </div>
+  </div>
 
 
 
