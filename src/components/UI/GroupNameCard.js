@@ -25,10 +25,19 @@ function GroupNameCard({group, userID}) {
 
   const NavigateToAddTasksForm = (groupID) => {
 
+    const testValue = 1;
     //include navigate statement with params
-    
-      navigate('../GroupPage/AddTaskPage')
+      <AddTasksPage
+      groupCode = {testValue}
+      />
+
+      navigate('../GroupPage/AddTaskPage');
+      
   
+  }
+
+  function NavigateTest(groupCode) {
+    navigate("../GroupPage/AddTaskPage")
   }
 
   const navigateToViewGroupTasks = () => {

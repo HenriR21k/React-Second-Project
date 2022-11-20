@@ -3,10 +3,10 @@ import Button from "../UI/Button";
 import { useState } from "react";
 import { Navigate, useNavigate } from 'react-router-dom';
 import './Form.css'
-import './GroupForm.css'
+import './TaskForm.css'
 
 
-export default function GroupForm(props) {
+export default function TaskForm(props) {
 
   //Initialisation
 

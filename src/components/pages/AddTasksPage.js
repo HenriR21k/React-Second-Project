@@ -1,9 +1,9 @@
 import GroupList from "../UI/GroupList";
-import GroupForm from "../entities/GroupForm.js";
+import TaskForm from "../entities/TaskForm.js";
 import { API } from "../api/apiRequest";
 
 
-const AddTasksPage = () => {
+const AddTasksPage = (props) => {
   // Properties ----------------------------
 
   /*
@@ -14,11 +14,9 @@ const AddTasksPage = () => {
 
   */
   const accessedGroupID = 1;
+  console.log(accessedGroupID)
   // Hooks ---------------------------------
   // Methods -------------------------------
-  /* 
-  Implement the API.Post code here.
-  */
 
   const handleGroupTaskPost = async (newTask) => {
 
@@ -28,11 +26,13 @@ const AddTasksPage = () => {
     console.log("outcome of post: "+JSON.stringify(outcome.response));
     //fetchGroupTasks(); will be passed in as a handler throug props to redisplay groupTasks.
   }
+
+  //const { state: { infoId } = {} } = useLocation();
   // View ----------------------------------
 
   return (
       <>
-      <GroupForm
+      <TaskForm
       groupID = {accessedGroupID}
       onPost = {handleGroupTaskPost}
       /> {/**Pass in the groupID as a parameter */}

@@ -2,12 +2,22 @@ input {
  
   height: 50px;
   width: 100%;
+  background-color: transparent;
+  color: #eeeeee;
+  outline: none;
+  outline-style: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #292424 1px;
+  padding: 3px 10px;
   
 }
 
 textarea {
   height: 100px;
   width: 100%;
+  
   
 }
 
@@ -33,7 +43,7 @@ textarea[name] {
   font-family: "DM Sans", sans-serif;
   font-size: 18px;
   line-height: 1.5;
-	color: #6658d3;
+  padding: 10px;
 }
 
 
