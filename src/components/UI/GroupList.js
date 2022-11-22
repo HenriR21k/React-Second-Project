@@ -4,18 +4,25 @@ import CardContainer from './CardContainer';
 
 
 export function GroupList(props) {
+   
     return (
+        
+        
         <CardContainer className={classes.list}>
             {
-                props.groups.map(group => 
+                props.groups.map(group => {
+                  
+                    return(
                     <GroupNameCard 
                         key={group.GroupID} 
                         group = {group} 
                         userID = {props.userID}
                     />
-                )
+                    )
+                })
             }
         </CardContainer>
+       
     );
 }
 

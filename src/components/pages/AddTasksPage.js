@@ -1,6 +1,7 @@
 import GroupList from "../UI/GroupList";
 import TaskForm from "../entities/TaskForm.js";
 import { API } from "../api/apiRequest";
+import { useLocation } from "react-router-dom";
 
 
 const AddTasksPage = (props) => {
@@ -13,8 +14,17 @@ const AddTasksPage = (props) => {
   I'm setting the groupID to be 1
 
   */
-  const accessedGroupID = 1;
-  console.log(accessedGroupID)
+  
+  
+ 
+  const { state } = useLocation(); // 
+  console.log(state);
+  const accessedGroupID = state;
+
+  
+
+  //const accessedGroupID = location.state.value;
+  //console.log(accessedGroupID)
   // Hooks ---------------------------------
   // Methods -------------------------------
 

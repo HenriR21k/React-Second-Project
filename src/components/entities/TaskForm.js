@@ -38,7 +38,7 @@ export default function TaskForm(props) {
   return (
     <>
   
-    <p>{props.groupID}</p>
+   
 
 
 <div className="Container">

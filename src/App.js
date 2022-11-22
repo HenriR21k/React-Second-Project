@@ -17,7 +17,7 @@ function App() {
           <Route path='*' element={<PageNotFound />} />
           <Route path='/' element={<Home />} />
           <Route path='/signin'  element={<SignIn />} />
-          <Route path='/GroupPage/AddTaskPage' element={<AddTasksPage />} />
+         { <Route path='/GroupPage/AddTaskPage' element={<AddTasksPage />} /> }
         </Routes>
       </Layout>
     </BrowserRouter>

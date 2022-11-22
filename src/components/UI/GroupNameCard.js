@@ -6,7 +6,9 @@ import AddTasksPage from '../pages/AddTasksPage';
 
 function GroupNameCard({group, userID}) {
   //Initialisation -------------------
-
+  console.log(`group=[${JSON.stringify(group)}]`);
+  console.log(`userid=[${userID}]`);
+  
   const endpoint = `/groups/${group.GroupID}/users/${userID}/tasks`
   const navigate = useNavigate();
   // State ---------------------------------------
@@ -14,59 +16,56 @@ function GroupNameCard({group, userID}) {
 
   // Methods -------------------------------------
   const apiCall = async (endpoint) => {
-  const URL = 'http://localhost:5000/api';
-  const endpointAddress = URL + endpoint;
-  const response = await fetch(endpointAddress)
-  const result = await response.json();
-  setTasks(result);
+    const URL = 'http://localhost:5000/api';
+    const endpointAddress = URL + endpoint;
+    const response = await fetch(endpointAddress);
+    const result = await response.json();
+    setTasks(result);
   }
   
   useEffect(() => { apiCall(endpoint) }, []);
 
-  const NavigateToAddTasksForm = (groupID) => {
+  const NavigateToAddTasksForm = () => {
+   // console.log(`groupCode=${groupCode}`);
 
-    const testValue = 1;
     //include navigate statement with params
-      <AddTasksPage
-      groupCode = {testValue}
-      />
+   
+    navigate('../GroupPage/AddTaskPage', {state: group.GroupID
+    });
+  }
 
-      navigate('../GroupPage/AddTaskPage');
+  const valuePassing = function () {
+    navigate("../GroupPage/AddTaskPage", {
+      state: group.GroupID
       
-  
-  }
+    })
+  };
 
-  function NavigateTest(groupCode) {
-    navigate("../GroupPage/AddTaskPage")
-  }
 
-  const navigateToViewGroupTasks = () => {
-  navigate("../")
-  }
-  
+
+  //() => NavigateToAddTasksForm(group.GroupID)
+
   
   return (
 
     <div className="GroupNameCard">
-
-    
-    <p onClick={NavigateToAddTasksForm}>Group {group.GroupID}: {group.GroupName}</p>
-    
-      
+      <p onClick={valuePassing}>Group {group.GroupID}: {group.GroupName}</p>
       <div className='TaskCard'>
-        {/*tasks.map((task) => {
-          return (
-            <div>
-              <ul>
-                <li>{task.TaskTitle}</li>
-              </ul>
-            </div>
-          );
-        })*/}
+        {
+          !tasks
+            ? <p>No tasks found</p>
+            : tasks.map((task) => {
+                return (
+                  <div>
+                    <ul>
+                      <li>{task.TaskTitle}</li>
+                    </ul>
+                  </div>
+                );
+              })
+        }
       </div>
-      
     </div>
-    
   )
 };
 
